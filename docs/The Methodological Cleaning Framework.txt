@@ -1,0 +1,25 @@
+Have you started data cleaning?
+│
+├── 1. Check for Duplicates
+│   ├── Are there fully duplicated rows?
+│   │   ├── Yes ──> Remove duplicates (Keep 1st record) ──> Go to Step 2
+│   │   └── No  ──> Go to Step 2
+│
+├── 2. Check Data Types
+│   ├── Are dates formatted as dates and numbers as numbers?
+│   │   ├── No  ──> Convert format (CAST/Format) ──> Go to Step 3
+│   │   └── Yes ──> Go to Step 3
+│
+├── 3. Look for Missing Values/Nulls
+│   ├── Are there blanks in the column?
+│   │   ├── Yes ──> Ask yourself: Is it a primary column (like Keys) or secondary?
+│   │   │   ├── Primary (Primary Key/Date) ──> Delete the entire row ──> Go to Step 4
+│   │   │   └── Secondary (Discount/Category) ──> Replace blank with (0) or ("Unknown") ──> Go to Step 4
+│   │   └── No  ──> Go to Step 4
+│
+└── 4. Check Text Standardization
+    ├── Are there extra spaces or inconsistent letter cases (Upper/Lower)?
+    │   ├── Yes ──> Use TRIM() and PROPER() functions to standardize ──> (Column is ready ✔️)
+    │   └── No  ──> (Column is ready ✔️)
+    │
+    └── 🏁 Done! Move to the next column or start analyzing the data.

@@ -1,0 +1,146 @@
+First: The Methodological Cleaning Framework (Ordered by Dependency)
+This workflow is structured based on Dependency; starting with structural operations that alter the data volume (deleting rows), moving to general formatting, 
+and concluding with cellular-level values to ensure zero technical errors during execution.
+
+[1. Filter & Delete Missing] ➔ [2. Remove Duplicates] ➔ [3. Standardize Dates] ➔ [4. Format Numbers/Currency] ➔ [5. Trim Text]
+
+1. Data Volume & Structure Phase
+Step 1: Identify and Remove Critical Missing Values (Blanks): We start here because deleting incomplete rows reduces the dataset's size early on, 
+saving processing time for subsequent steps.
+
+Step 2: Remove Duplicate Records: This is executed right after clearing blanks to ensure you are operating on a unique, fully-populated dataset.
+
+2. General Data Formatting Phase
+Step 3: Standardize Date Formats: Time-series analysis relies heavily on dates. Fixing them early prevents logic breakdown in future time-based formulas.
+
+Step 4: Align Numerical and Currency Consistency: Standardizing decimal places and thousand separators for metrics like sales, stock, prices, and revenue.
+
+3. Data Refinement & Cleansing Phase
+Step 5: Clean and Standardize Text Strings: Removing hidden spaces and matching letter casing. (Left for the end as it often requires temporary helper columns
+and functions like TRIM).
+
+
+
+Second: Top 5 Cleaning Operations per Data Type
+1. Text / Qualitative Data
+Removing Extra Spaces: Utilizing the =TRIM(A2) function to strip out leading, trailing, and redundant in-between spaces.
+
+Standardizing Text Casing (For English): Applying =UPPER(A2) to capitalize everything or =LOWER(A2) to prevent text duplication caused by case sensitivity
+ (e.g., treating PRO03 and pro03 as different entities).
+
+Cleaning Non-Printable Characters: Using the =CLEAN(A2) function to remove hidden system symbols or line breaks that often occur during database exports.
+
+Replacing Erroneous Text: Using Find and Replace (Ctrl + H) to mass-correct common spelling typos in store names or product descriptions.
+
+Splitting or Merging Text: Utilizing the Text to Columns feature (available under the Data tab in Excel for the Web) to separate merged text attributes 
+using delimiters like commas or hyphens.
+
+
+2. Numeric / Quantitative Data
+Standardizing Decimal Places: Aligning prices and revenues to a fixed number of decimal points (typically 2) using the decimal adjustment tools under the Home tab.
+
+Stripping Text from Numeric Fields: Purging letters embedded in number cells (e.g., transforming 10 kg into just 10) so they are recognized as mathematical values.
+
+Handling Illogical Negative Values: Scanning metrics like "Sales Quantity" or "Stock" to ensure no negative numbers exist due to human entry errors.
+
+Applying Thousand Separators: Enforcing commas on large figures (e.g., 13,142) to make revenue and volume summaries instantly readable.
+
+Converting Text-to-Number: Forcing Excel to recognize numbers currently stored as text by switching their format to Number from the Home tab dropdown.
+
+
+3. Date & Time Data
+Standardizing Date Formats: Uniformly converting all date entries into a standard layout (like Short Date) to resolve conflicting regional settings (DD/MM vs MM/DD).
+
+Converting Text-Based Dates: Repairing dates imported as plain text strings that Excel cannot naturally plot onto a timeline or pivot table group.
+
+Sanity-Checking Out-of-Bounds Dates: Filtering and reviewing extreme years (e.g., a typo reading year 2030 or 1900) caused by rapid manual typing.
+
+Isolating Date from Time Stamps: Truncating timestamps to keep just the calendar date if the end goal is purely daily performance tracking.
+
+Imputing Missing Timeline Gaps: Checking the chronological sequence of the sales dataset to flag missing operating dates.
+
+
+
+Third: Top 10 Common Data Issues & How to Fix Them in Excel for the Web
+
+Here is the complete, structured data cleaning framework translated into professional English:
+
+---
+
+## First: The Methodological Cleaning Framework (Ordered by Dependency)
+
+This workflow is structured based on **Dependency**; starting with structural operations that alter the data volume (deleting rows), moving to general formatting, and concluding with cellular-level values to ensure zero technical errors during execution.
+
+```
+[1. Filter & Delete Missing] ➔ [2. Remove Duplicates] ➔ [3. Standardize Dates] ➔ [4. Format Numbers/Currency] ➔ [5. Trim Text]
+
+```
+
+### 1. Data Volume & Structure Phase
+
+* **Step 1: Identify and Remove Critical Missing Values (Blanks):** We start here because deleting incomplete rows reduces the dataset's size early on, saving processing time for subsequent steps.
+* **Step 2: Remove Duplicate Records:** This is executed right after clearing blanks to ensure you are operating on a unique, fully-populated dataset.
+
+### 2. General Data Formatting Phase
+
+* **Step 3: Standardize Date Formats:** Time-series analysis relies heavily on dates. Fixing them early prevents logic breakdown in future time-based formulas.
+* **Step 4: Align Numerical and Currency Consistency:** Standardizing decimal places and thousand separators for metrics like sales, stock, prices, and revenue.
+
+### 3. Data Refinement & Cleansing Phase
+
+* **Step 5: Clean and Standardize Text Strings:** Removing hidden spaces and matching letter casing. (Left for the end as it often requires temporary helper columns and functions like `TRIM`).
+
+---
+
+## Second: Top 5 Cleaning Operations per Data Type
+
+### 1. Text / Qualitative Data
+
+1. **Removing Extra Spaces:** Utilizing the `=TRIM(A2)` function to strip out leading, trailing, and redundant in-between spaces.
+2. **Standardizing Text Casing (For English):** Applying `=UPPER(A2)` to capitalize everything or `=LOWER(A2)` to prevent text duplication caused by case sensitivity (e.g., treating `PRO03` and `pro03` as different entities).
+3. **Cleaning Non-Printable Characters:** Using the `=CLEAN(A2)` function to remove hidden system symbols or line breaks that often occur during database exports.
+4. **Replacing Erroneous Text:** Using **Find and Replace** (`Ctrl + H`) to mass-correct common spelling typos in store names or product descriptions.
+5. **Splitting or Merging Text:** Utilizing the **Text to Columns** feature (available under the Data tab in Excel for the Web) to separate merged text attributes using delimiters like commas or hyphens.
+
+### 2. Numeric / Quantitative Data
+
+1. **Standardizing Decimal Places:** Aligning prices and revenues to a fixed number of decimal points (typically 2) using the decimal adjustment tools under the Home tab.
+2. **Stripping Text from Numeric Fields:** Purging letters embedded in number cells (e.g., transforming `10 kg` into just `10`) so they are recognized as mathematical values.
+3. **Handling Illogical Negative Values:** Scanning metrics like "Sales Quantity" or "Stock" to ensure no negative numbers exist due to human entry errors.
+4. **Applying Thousand Separators:** Enforcing commas on large figures (e.g., `13,142`) to make revenue and volume summaries instantly readable.
+5. **Converting Text-to-Number:** Forcing Excel to recognize numbers currently stored as text by switching their format to **Number** from the Home tab dropdown.
+
+### 3. Date & Time Data
+
+1. **Standardizing Date Formats:** Uniformly converting all date entries into a standard layout (like `Short Date`) to resolve conflicting regional settings (DD/MM vs MM/DD).
+2. **Converting Text-Based Dates:** Repairing dates imported as plain text strings that Excel cannot naturally plot onto a timeline or pivot table group.
+3. **Sanity-Checking Out-of-Bounds Dates:** Filtering and reviewing extreme years (e.g., a typo reading year 2030 or 1900) caused by rapid manual typing.
+4. **Isolating Date from Time Stamps:** Truncating timestamps to keep just the calendar date if the end goal is purely daily performance tracking.
+5. **Imputing Missing Timeline Gaps:** Checking the chronological sequence of the sales dataset to flag missing operating dates.
+
+---
+
+## Third: Top 10 Common Data Issues & How to Fix Them in Excel for the Web
+
+| #      |                   Issue                         | Practical Cleaning Steps in Excel for the Web                                                                                                                                                |
+===========================================================================================================================================================================================================================================================
+| ---    | ---                                             | ---                                                                                                                                                                                          |
+| **1**  | **Missing Values (Blanks)**                     | Turn on Filters (`Ctrl + Shift + L`) ➔ Choose **(Blanks)** ➔ Highlight the blank rows ➔ Right-click and select **Delete Rows**.                                                             |
+
+| **2**  | **Duplicate Rows**                              | Select the entire dataset (`Ctrl + A`) ➔ Go to the **Data** tab ➔ Click **Remove Duplicates** ➔ Click **OK**.                                                                               |
+
+| **3**  | **Hidden Spaces (Leading/Trailing)**            | Insert a temporary column ➔ Write `=TRIM(A2)` ➔ Drag it down, then copy the result and **Paste Values** over the original text.                                                             |
+
+| **4**  | **Numbers Stored as Text**                      | Highlight the column ➔ Go to the **Home** tab ➔ Open the formatting dropdown (usually says *General*) ➔ Select **Number**.                                                                  |
+
+| **5**  | **Mixed Date Formats**                          | Select the date column ➔ Go to the **Home** tab ➔ Open the formatting dropdown ➔ Choose **Short Date** to unify them instantly.                                                             |
+
+| **6**  | **Outliers (Anomalous Figures)**                | Filter your Sales or Price columns ➔ **Sort Largest to Smallest** to quickly isolate and review massive, illogical numbers for correction or deletion.                                       |
+
+| **7**  | **Inconsistent Casing**                         | Use `=UPPER(A2)` in a helper column to standardize promo or product IDs (e.g., converting `pr14` to `PR14`).                                                                                 |
+
+| **8**  | **Garbled CSV Text Encoding**                   | If characters look like broken symbols (e.g., ``), re-upload the file to OneDrive ensuring the File Origin/Encoding is set to **UTF-8**.                                                     |
+
+| **9**  | **Formula Errors (e.g., `#VALUE!`, `#DIV/0!`)** | Wrap your equations using `=IFERROR(Your_Formula, 0)` to cleanly catch math calculation issues and replace errors with a neutral zero or blank space.                                        |
+
+| **10** | **Completely Empty Columns**                    | In promo tracking data (like `promo_bin_2`), if an entire column is completely empty across thousands of rows, right-click the column letter and select **Delete Column** to trim file size. |
